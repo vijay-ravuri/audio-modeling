@@ -1,3 +1,7 @@
+# Ignoring all contents of data folder
+# Data can be gathered from source in readme
+data/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
