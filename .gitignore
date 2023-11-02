@@ -1,6 +1,8 @@
 # Ignoring all contents of data folder
 # Data can be gathered from source in readme
-data/*
+data/aggregated_audio.csv
+*.wav
+*.mp3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
