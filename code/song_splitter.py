@@ -85,9 +85,9 @@ def get_recommendations(song_frame, df):
 
 
 # Plots a decomposed song in the first two principal components
-def plot_decomp(decomposed):
+def plot_decomp(decomposed, component_1 = 0, component_2 = 1):
     fig, ax = plt.subplots()
-    cm = plt.cm.ScalarMappable(cmap = 'Blues', 
+    cm = plt.cm.ScalarMappable(cmap = 'winter', 
                                norm  = plt.Normalize(
                                    0, 
                                    decomposed.shape[0]*3
@@ -95,10 +95,10 @@ def plot_decomp(decomposed):
                             )
 
     plot = sns.scatterplot(
-        x = decomposed[0],
-        y = decomposed[1],
+        x = decomposed[component_1],
+        y = decomposed[component_2],
         hue = decomposed.index * 3,
-        palette = 'Blues',
+        palette = 'winter',
         ax = ax
     )
 
@@ -106,7 +106,8 @@ def plot_decomp(decomposed):
 
     plt.colorbar(cm, ax = plot, label = 'Time (s)')
 
-    ax.set_xlabel('First Principal Component')
-    ax.set_ylabel('Second Principal Component')
+    labels = ['First', 'Second', 'Third', 'Fourth', 'Fifth']
+    ax.set_xlabel('{} Principal Component'.format(labels[component_1]))
+    ax.set_ylabel('{} Principal Component'.format(labels[component_2]))
 
     return fig, ax
