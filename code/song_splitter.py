@@ -38,19 +38,19 @@ def audio_framer(song, idx, splits = 10):
 
 # Returns top 5 songs by segment cosine similarity
 # For a step by step explanation see 05-Recommender_System
-def get_recommendations(song_frame, df):
+def get_recommendations(song_frame, df, n = 5):
     similarities = pd.DataFrame(cosine_similarity(song_frame, df[[str(x) for x in range(100)]]))
 
     to_stack = []
     for idx in similarities.index:
-        # Find top 5 similar for the row
-        top5 = similarities.loc[idx, :].sort_values().tail()
-        topper5 = pd.DataFrame(zip(top5.index, top5.values), columns = ['segment', 'cos'])
+        # Find top n similar for the row
+        top = similarities.loc[idx, :].sort_values().tail(n*2)
+        topper = pd.DataFrame(zip(top.index, top.values), columns = ['segment', 'cos'])
         
         # Slightly de-weighting the first ~9s of each song
-        topper5['cos'] = topper5['cos'].apply(lambda x: 0.8 * x if idx < 3 else x)
+        topper['cos'] = topper['cos'].apply(lambda x: 0.8 * x if idx < 3 else x)
 
-        to_stack.append(topper5)
+        to_stack.append(topper)
 
     stacked_sim = pd.concat(to_stack).reset_index(drop = True)
 
@@ -63,11 +63,11 @@ def get_recommendations(song_frame, df):
         right_index = True
     )
 
-    # Sum similarities for each song with a segment in our top 5 similarities
+    # Sum similarities for each song with a segment in our top n similarities
     most_similar = similarities_with_index.groupby(
         'song_index')['cos'].sum().sort_values(
             ascending = False
-            ).head()
+            ).head(n)
 
 
     # Gather song info for most similar songs
