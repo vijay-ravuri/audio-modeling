@@ -14,13 +14,12 @@ import pickle
 from audioread.exceptions import NoBackendError
 from soundfile import LibsndfileError
 
-"""
-Streamlit allows for easy deployment of models for use but is not particularly friendly towards
-walking through a process in the way that this app was written to do. As a result, this code has
-a lot of redundancy and complex conditional statements in order to allow for a linear narrative as
-a song is uploaded that culminates in generating recommendations. For future purposes, a different
-library would be ideal for building an app of this nature.
-"""
+
+# Streamlit allows for easy deployment of models for use but is not particularly friendly towards
+# walking through a process in the way that this app was written to do. As a result, this code has
+# a lot of redundancy and complex conditional statements in order to allow for a linear narrative as
+# a song is uploaded that culminates in generating recommendations. For future purposes, a different
+# library would be ideal for building an app of this nature.
 
 # Defining a number of session states to allow for interactability
 if 'reset' not in st.session_state:
