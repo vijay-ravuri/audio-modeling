@@ -18,6 +18,7 @@ Our primary metric for evaluating the CNN was [categorical cross-entropy (Log Lo
 $$
  \text{Categorical Cross-Entropy} = -\frac{1}{N}\sum_{i = 1}^{N} y_i \sum_{j=1}^{k}y_{ij}\ln{p_{ij}}
 \\
+\\
 \text{Where N is the number of observations and k is the number of categories.}
 $$
 
