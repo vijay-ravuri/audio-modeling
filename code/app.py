@@ -54,7 +54,7 @@ st.markdown(
     """
     ## Song Analysis and Recommendations
 
-    This app allows you to upload a song of your choosing and see how that song is processed and then generate
+    This app allows you to upload a song of your choosing and see view that song in a few ways and then generate
     recommendations for similar songs in our dataset. The exact algorithm for the recommender system is documented 
     in the Recommender System Notebook. 
     
