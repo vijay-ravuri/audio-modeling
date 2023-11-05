@@ -30,7 +30,7 @@ if st.session_state['reset']:
     for key in st.session_state.keys():
         del st.session_state[key]
 
-
+# Session state variables to keep information present as buttons are pressed or interacted with
 if 'mel' not in st.session_state:
     st.session_state['mel'] = False
 
@@ -55,8 +55,10 @@ st.markdown(
     ## Song Analysis and Recommendations
 
     This app allows you to upload a song of your choosing and see how that song is processed and then generate
-    recommendations for similar songs in our dataset. The process for how this system works is documented in the
-    Recommender System Notebook. This applet does not save the song uploaded in any way once it is closed and any
+    recommendations for similar songs in our dataset. The exact algorithm for the recommender system is documented 
+    in the Recommender System Notebook. 
+    
+    This applet does not save the song uploaded in any way once it is closed and any
     data uploaded or generated is deleted.
     """
     )
@@ -185,6 +187,7 @@ try:
                             recos.iloc[idx, 4],
                             round(recos.iloc[idx, 5], 4)) for idx in range(recos.shape[0])
                         ])
+                    
                     # Below is the for-loop that does the same thing as above for readability
                     # The list generation was made to make the app feel slightly less sluggish
                     # for idx in range(recos.shape[0]):
@@ -209,8 +212,8 @@ try:
                     # Reset button
                     st.write("###### If we want to try a different song we can:")
                     st.button("RESET", key = 'reset', type = 'primary')
-                    
-                    
+
+# Catching file load-in issues    
 except (NoBackendError, LibsndfileError):
     st.write('Failed to read in file, please check filetype and try again.')
     input_song = None
