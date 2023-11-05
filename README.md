@@ -16,9 +16,8 @@ A CNN is a type of feed-forward Neural Network that uses [convolutional layers](
 Our primary metric for evaluating the CNN was [categorical cross-entropy (Log Loss)](https://en.wikipedia.org/wiki/Cross-entropy) in our case this equation is as follows:
 
 $$
- \text{Categorical Cross-Entropy} = -\frac{1}{N}\sum_{i = 1}^{N} y_i \sum_{j=1}^{k}y_{ij}\ln{p_{ij}}
-\\
-\\
+\text{Categorical Cross-Entropy} = -\frac{1}{N}\sum_{i = 1}^{N} y_i \sum_{j=1}^{k}y_{ij}\ln{p_{ij}}
+\newline
 \text{Where N is the number of observations and k is the number of categories.}
 $$
 
