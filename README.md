@@ -1,5 +1,7 @@
 # Song Classification and Recommendations
+The web app where you can find recommendations for a song of your choosing can be found [here](https://audio-modeling.streamlit.app/). 
 
+Slides for the presentation can be found [here](./presentation.pdf).
 ## Background
 
 This project uses song and song metadata gathered from the [Free Music Archive](https://freemusicarchive.org/) by a group of researchers at École Polytechnique Fédérale de Lausanne (EPFL). The full repo with their data and information about the source of the data can be found [here](https://github.com/mdeff/fma). Specifically, we used the FMA-Small subset of data which is a set of 8000 30-second clips from songs with an even genre distribution. Genre here refers to the "top genre" of each song as determined by the researchers who created this dataset. Songs of course can be any number of genres so there is naturally a lot of overlap in songs between genres.
