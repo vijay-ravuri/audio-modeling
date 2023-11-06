@@ -39,17 +39,22 @@ In essence, Categorical Cross-Entropy takes the average of how far off our predi
 LightGBM is a gradient-boosting tree-based model that builds a number of successive simple decision trees that are trained on the error of the previous tree. A more thorough overview of gradient boosting and boosting in general can be found [here](https://www.mygreatlearning.com/blog/gradient-boosting/). Our LGBM model was built on the first 100 principle components of our songs. The exact process used here is detailed in the [04-Decomposition_Modeling Notebook](./code/04-Decomposition_Modeling.ipynb). In short, songs were split into 3-second segments and then reduced down using the average and standard deviations of the values at the 128 mel-bands for each segment. Those averages and standard deviations were then reduced further using PCA. 
 
 Our primary metric for this approach was Accuracy where:
-$$
+```math
 \text{Accuracy} = \frac{\# \text{ of correct predictions}}{N}
-$$
+```
 Additionally, [04](./code/04-Decomposition_Modeling.ipynb) does briefly assess our models performance with various other metrics such as log-loss, [precision, recall](https://en.wikipedia.org/wiki/Precision_and_recall), and [F-1 Score](https://en.wikipedia.org/wiki/F-score). 
 ## Recommender System
 Our recommender system works on the same aggregated 3-second segments of songs as the LightGBM model. New inputs are broken into 3-second segments, average and standard deviations for each band are calculated and then decomposed, and those principal components are used to find similar segments in our dataset using [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). The top 10 most similar segments in our data are gathered for each segment in the user-input song. Then, those similarities are grouped by whichever song they originally came from and summed together. The recommendations are then the top 5 songs with highest summed cosine similarities. The exact process of taking in a new song and finding similar songs is detailed in [05](./code/05-Recommender_System.ipynb) and the function that is used for the applet can be found in [song_utils.py](./code/song_utils.py).
 
 The cosine similarity between two vectors $A$ and $B$ is defined as follows:
-$$
+
+
+```math
 cos(\theta) = \frac{A \cdot B}{\lVert A\rVert \lVert B \rVert}
-$$
+```
+
+
+
 This means that song segments with similar values in each principal components will have high scores and segments with very different values will have low scores.
 ## Conclusion & Future Work
 
